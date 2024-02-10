@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/ico/ico.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="shortcut icon" href="/ico/ico.ico" type="image/x-icon">
+  <title>Totales por día</title>
+</head>
+<body>
+  <header id="header_container" class="header_container"></header>
+  <h1 class="title_web">Totales de los Registros por día</h1>
+
+  <section>
+    <div class="contenedor_day">
+      <% data.map( (data) => { %>
+
+        <div class="registroDay">
+          <div class="fecha"><%= data.registered.toLocaleDateString('en-us', { weekday:"short", year:"numeric", month:"short", day:"numeric"}) %></div>
+          <div class="prendas">Prendas: <%= data.prendas %></div>
+          <div class="valorColor totalVenta"><%= data.total %></div>
+        </div>
+
+      <% }) %>
+    </div>
+
+  </section>
+
+  <footer class="footer_container" id="footer_container"></footer> 
+  <script src="/js/formulaColor.js"></script>
+  <script src="/js/index.js"></script>
+  <script src="/js/aNumeros.js"></script>
+</body>
+</html>

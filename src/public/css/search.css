@@ -1,0 +1,11 @@
+label{
+  font-size: 1.2em;
+  font-style: italic;
+  display: block;
+  width: 100%;
+  text-align: left;
+  color: var(--colorAzul);
+}
+label + input[type='submit'] {
+  margin-top: 1em;
+}
