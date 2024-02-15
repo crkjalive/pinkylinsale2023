@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/main.css" />
-    <link rel="shortcut icon" href="/ico/ico.ico" type="image/x-icon">
-    <title> 😏 Registro de ventas</title>
+    <link rel="shortcut icon" href="/ico/ico.ico" type="image/x-icon" />
+    <title>😏 Registro de ventas</title>
   </head>
   <body>
     <header id="header_container" class="header_container"></header>
-    
+
     <h1 class="title_web">Registros del día</h1>
 
     <section class="salesDataDate">
@@ -26,65 +26,59 @@
         <div class="title">Edit</div>
         <div class="title">Delete</div>
       </div>
-      <div class="data_container ">
-
-        <% let stoky = 0 %>
-        <% let nequiTotal = 0; let daviTotal = 0;%>
-        <% let boldTotal = 0; let efectivoTotal = 0; let totales = 0; %>
-
-        <% sales.map( indice => { %>
-          <div class="registro gridSales">
-            <div class="data"><%= indice.id_sale %></div>
-            <div class="data"><%= indice.reference %></div>
-            <div class="data"><%= indice.description %></div>
-            <div class="data"><%= indice.payment_method %></div>
-            <div class="data"><%= indice.quantity %></div>
-            <div class="data"><%= indice.unit_price %></div>
-            <% stoky = indice.quantity %>
-            <div class="data"><%= indice.quantity * indice.unit_price %></div>
-            <div class="data"><%= indice.registered.toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) %></div>
-            <div class="data">
-              <a class="btn-update" href="/sales/update/<%= indice.id_sale %>">
-                Up
-              </a>
-            </div>
-            <div class="data">
-              <a class="btn-delete" href="/sales/delete/<%= indice.id_sale %>">
-                Del
-              </a>
-            </div>
+      <div class="data_container">
+        <% let stoky = 0; %> <% let nequiTotal = 0; let daviTotal = 0;%> <% let
+        boldTotal = 0; let efectivoTotal = 0; let totales = 0; %> <% sales.map(
+        indice => { %>
+        <div class="registro gridSales">
+          <div class="data"><%= indice.id_sale %></div>
+          <div class="data"><%= indice.reference %></div>
+          <div class="data"><%= indice.description %></div>
+          <div class="data"><%= indice.payment_method %></div>
+          <div class="data"><%= indice.quantity %></div>
+          <div class="data"><%= indice.unit_price %></div>
+          <% stoky = indice.quantity %>
+          <div class="data"><%= indice.quantity * indice.unit_price %></div>
+          <div class="data">
+            <%= indice.registered.toLocaleDateString('en-us', { weekday:"long",
+            year:"numeric", month:"short", day:"numeric"}) %>
           </div>
+          <div class="data">
+            <a class="btn-update" href="/sales/update/<%= indice.id_sale %>">
+              Up
+            </a>
+          </div>
+          <div class="data">
+            <a class="btn-delete" href="/sales/delete/<%= indice.id_sale %>">
+              Del
+            </a>
+          </div>
+        </div>
 
-          <% if (indice.payment_method == 'NEQUI') { %>
-            <% nequiTotal += indice.quantity * indice.unit_price %>
-          <% } else if (indice.payment_method == 'DAVIPLATA') { %>
-            <% daviTotal += indice.quantity * indice.unit_price %>
-          <% } else if (indice.payment_method == 'BOLD') { %>
-            <% boldTotal += indice.quantity * indice.unit_price %>
-          <% } else if (indice.payment_method == 'EFECTIVO') { %>
-            <% efectivoTotal += indice.quantity * indice.unit_price %>
+        <% if (indice.payment_method == 'NEQUI') { %> 
+          <% nequiTotal += indice.quantity * indice.unit_price %> 
+        <% } else if (indice.payment_method == 'DAVIPLATA') { %> 
+          <% daviTotal += indice.quantity * indice.unit_price %> 
+        <% } else if (indice.payment_method == 'BOLD') { %> 
+          <% boldTotal += indice.quantity * indice.unit_price %> 
+        <% } else if (indice.payment_method == 'EFECTIVO') { %> 
+          <% efectivoTotal += indice.quantity * indice.unit_price %> 
           <% } %>
-          <% totales += indice.quantity * indice.unit_price %>
-
-        <% }) %>
+        <% totales += indice.quantity * indice.unit_price %> <% }) %>
       </div>
     </section>
 
-    <div>
-      <div class="contenedorRenta">
-        <div>Total: <div class="formato"><%= totales %></div></div>
-        <div>Efectivo: <div class="formato"><%= efectivoTotal %></div></div>
-        <div>Renta: <div class="formato"><%= nequiTotal + daviTotal + boldTotal %></div></div>
-      </div>
-      <div class="contenedorRenta renta">
-        <div>Nequi: <div class="formato"><%= nequiTotal %></div></div>
-        <div>Daviplata: <div class="formato"><%= daviTotal %></div></div>
-        <div>Bold: <div class="formato"><%= boldTotal %></div></div>
-      </div>
+    <div class="contenedor_superRenta">
+        <div class="contenedorRenta">Total: <div class="formato"><%= totales %></div></div>
+        <div class="contenedorRenta">Efectivo: <div class="formato"><%= efectivoTotal %></div></div>
+        <div class="contenedorRenta">Renta: <div class="formato"><%= nequiTotal + daviTotal + boldTotal %></div></div>
+        <div class="contenedorRenta">Nequi: <div class="formato"><%= nequiTotal %></div></div>
+        <div class="contenedorRenta">Daviplata: <div class="formato"><%= daviTotal %></div></div>
+        <div class="contenedorRenta">Bold: <div class="formato"><%= boldTotal %></div></div>
     </div>
 
     <footer class="footer_container" id="footer_container"></footer>
-    
+
     <script src="/js/index.js"></script>
     <script src="/js/aNumeros.js"></script>
   </body>

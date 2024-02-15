@@ -65,17 +65,15 @@
 .gran_contenedor{
   background-color: dodgerblue;
   display: flex;
-  justify-content: center;
-  padding: 1em 0;
+  justify-content: left;
+  padding: 0;
   color: white;
 }
 .contenedor_valores{
   margin: .5em 1em;
 }
 .valores{
-  font-size: 1.5em;
-  background-color: dodgerblue;
-  font-weight: 600;
+  font-size: 1.1rem;
   border-radius: .5em;
   margin: 0;
 }

@@ -3,15 +3,15 @@
   background-color: var(--colorAzul);
   color: var(--colorBlanco);
   font-size: 1rem;
-  text-align: center;
+  text-align: right;
   bottom: 0;
   width: 100%;
 }
 .footer_container .text1{
-  padding: 1em 0 0 0;
+  padding: 1em 2em 0 0;
 }
 .footer_container .text2{
-  padding: 0 0 1.5em 0;
+  padding: 0 2em 1em 0;
 }
 .footer_container .tech_text{
   font-weight:lighter;
