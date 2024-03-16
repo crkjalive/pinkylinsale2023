@@ -13,14 +13,14 @@
 
     <h1 class="title_web">Busqueda Exitosa</h1>
 
-    <% let conteo=0; let costo=0; let venta=0; let utilidad=0; %>
+    <% let conteo=0; let costo=0; let venta=0; let utilidad=0; let cantidadSuma=0;%>
 
     <section class="salesResults">
       <div class="titles_container">
         <div id="mostrarConteo" class="title ancho"></div>
         <div class="title"></div>
         <div class="title"></div>
-        <div class="title"></div>
+        <div id="mostrarPrendas" class="title ancho"></div>
         <div class="title"></div>
         <div id="mostrarCosto" class="title ancho"></div>
         <div id="mostrarVenta" class="title ancho"></div>
@@ -53,15 +53,20 @@
           <div class="data"><strong><%= indice.utilidad_total %></strong></div>
           <div class="data"><%= indice.registered.toDateString() %></div>
 
-          <% conteo += indice.conteo %> <% costo += indice.costo_total %> <%
-          venta += indice.venta_total %> <% utilidad += indice.utilidad_total %>
-        </div>
+          <% conteo += indice.conteo %> 
+          <% costo += indice.costo_total %> 
+          <% venta += indice.venta_total %> 
+          <% utilidad += indice.utilidad_total %> 
+          <% cantidadSuma += indice.cantidad_total%>
 
+        </div>
+        
         <% }) %>
       </div>
 
       <div id="ocultarConteo"><%= conteo %></div>
       <div id="ocultarCosto"><%= costo %></div>
+      <div id="ocultarPrendas"><%= cantidadSuma %></div>
       <div id="ocultarVenta"><%= venta %></div>
       <div id="ocultarUtilidad"><%= utilidad %></div>
     </section>

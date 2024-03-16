@@ -14,7 +14,11 @@
   <h1 class="title_web">Total mensual</h1>
   
   <div class="contenedor_total">
-    <% let granTotal = 0; let granCosto = 0; let granUtilidad = 0; let granCantidad = 0; let efectivo = 0; let bold = 0; let daviplata = 0; let nequi = 0; %>
+    
+    <% let granTotal = 0; let granCosto = 0; let granUtilidad = 0; %>
+    <% let granCantidad = 0; let efectivo = 0; let bold = 0; %> 
+    <%let daviplata = 0; let nequi = 0; %>
+    
     <% data.map( (indice) => { %>
       <div class="mes_total">
         <div class="mes"><%= indice.mes %></div>
@@ -31,14 +35,15 @@
       </div>
     <% }) %>
   </div>
+  
   <div class="gran_contenedor">
     <div class="contenedor_valores">
-      <div class=" valores titles"> Total </div>
+      <div class=" valores titles"> Total registros </div>
       <div class=" valores formato"> <%= granTotal %> </div>
       <div></div>
     </div>
     <div class="contenedor_valores">
-      <div class=" valores titles"> Costo </div>
+      <div class=" valores titles"> Mercancía </div>
       <div class=" valores formato"> <%= granCosto %> </div>
     </div>
     <div class="contenedor_valores">

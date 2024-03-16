@@ -32,5 +32,5 @@ for (let i = 0; i < cantidad.length; i++) {
 
 for (let i = 0; i < granformato.length; i++) {
   aNumeros4 = new Intl.NumberFormat('es-ES').format(granformato[i].textContent)
-  granformato[i].textContent =aNumeros4
+  granformato[i].textContent = aNumeros4
 }

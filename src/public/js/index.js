@@ -1,6 +1,6 @@
 console.log("%cNodeJS 2023", "font-size:2rem; color:lime;");
 
-const version = 2023;
+const version = 2024
 
 const header = document.getElementById("header_container");
 const footer = document.getElementById("footer_container");
