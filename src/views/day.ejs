@@ -10,22 +10,30 @@
 </head>
 <body>
   <header id="header_container" class="header_container"></header>
-  <h1 class="title_web">Totales de los Registros por día</h1>
+  <h1 class="title_web">Totales de los Registros por día ::: </h1>
 
   <section>
     <div class="contenedor_day">
+      <%let dato = 0;%>
       <% data.map( (data) => { %>
-
         <div class="registroDay">
+
           <div class="fecha"><%= data.registered.toLocaleDateString('en-us', { weekday:"short", year:"numeric", month:"short", day:"numeric"}) %></div>
-          <div class="prendas">Prendas: <%= data.prendas %></div>
-          <div class="valorColor totalVenta"><%= data.total %></div>
+
+          <div class="prendas">
+            <span><%= data.prendas == 0 ? data.description + ' ' : 'STOCK SOLD ' %></span>
+            <%= data.prendas != 0 ? data.prendas : '' %></div>
+            <div class="valorColor totalVenta"><%= data.total %></div>
+            <div style="display: non;" class="utilidadColor totalVenta"><%= data.utilidad %></div>
+
         </div>
 
       <% }) %>
     </div>
 
   </section>
+
+  <div id="significadoColor"></div>
 
   <footer class="footer_container" id="footer_container"></footer> 
   <script src="/js/formulaColor.js"></script>
