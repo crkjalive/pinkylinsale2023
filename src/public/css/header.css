@@ -1,6 +1,9 @@
 .header_container {
   margin: 0;
   padding: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 .nav_container {
   background-color: var(--colorBlanco);

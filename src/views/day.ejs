@@ -1,43 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="/ico/ico.ico" type="image/x-icon">
   <link rel="stylesheet" href="/css/main.css" />
   <link rel="shortcut icon" href="/ico/ico.ico" type="image/x-icon">
-  <title>Totales por día</title>
+  <title>🏈 Total por día</title>
+  <style>
+    .forma {
+      font-weight: bold;
+      width: 70%;
+      text-align: center;
+    }
+  </style>
 </head>
+
 <body>
   <header id="header_container" class="header_container"></header>
-  <h1 class="title_web">Totales de los Registros por día ::: </h1>
+  <h1 class="title_web">🏈 Totales por día</h1>
 
   <section>
     <div class="contenedor_day">
-      <%let dato = 0;%>
-      <% data.map( (data) => { %>
-        <div class="registroDay">
 
-          <div class="fecha"><%= data.registered.toLocaleDateString('en-us', { weekday:"short", year:"numeric", month:"short", day:"numeric"}) %></div>
+      <% let totales=0; let utilidades=0; let dato=0;%>
 
-          <div class="prendas">
-            <span><%= data.prendas == 0 ? data.description + ' ' : 'STOCK SOLD ' %></span>
-            <%= data.prendas != 0 ? data.prendas : '' %></div>
-            <div class="valorColor totalVenta"><%= data.total %></div>
-            <div style="display: none;" class="utilidadColor totalVenta"><%= data.utilidad %></div>
+        <% data.map( (data)=> { %>
+          <div class="registroDay">
 
-        </div>
+            <div class="fecha">
+              <%= data.registered.toLocaleDateString('en-us', { weekday:"short", year:"numeric", month:"short",
+                day:"numeric"}) %>
+            </div>
 
-      <% }) %>
+            <div class="prendas">
+              <span>
+                <%= data.prendas==0 ? data.description + ' ' : 'STOCK SOLD ' %>
+              </span>
+              <%= data.prendas !=0 ? data.prendas : '' %>
+            </div>
+            <div class="valorColor totalVenta">
+              <%= data.total %>
+            </div>
+            <div style="display: none;" class="utilidadColor totalVenta">
+              <%= data.utilidad %>
+            </div>
+          </div>
+
+          <% totales +=data.total %>
+            <% utilidades +=data.utilidad %>
+
+              <% }) %>
     </div>
 
   </section>
 
-  <div id="significadoColor"></div>
+  <section style="display: flex;">
 
-  <footer class="footer_container" id="footer_container"></footer> 
+    <div class="">
+      <p class="forma">Equilibrio</p>
+      <div class="valorColor totalVenta" id="significadoColor"></div>
+    </div>
+
+    <div class="">
+      <p class="forma"">Utilidad</p>
+      <div class=" valorColor totalVenta">
+        <%= utilidades %>
+    </div>
+    </div>
+
+    <div class="">
+      <p class="forma">Venta Total</p>
+      <div class="valorColor totalVenta">
+        <%= totales %>
+      </div>
+    </div>
+
+  </section>
+
+
+  <footer class="footer_container" id="footer_container"></footer>
   <script src="/js/formulaColor.js"></script>
   <script src="/js/index.js"></script>
   <script src="/js/aNumeros.js"></script>
 </body>
+
 </html>

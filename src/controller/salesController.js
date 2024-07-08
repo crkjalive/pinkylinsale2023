@@ -4,14 +4,14 @@ const connection = require("../connection");
 me trae la solicitud por get, para renderizar la vista a mostrar */
 
 const getSales = (req, res) => {
-  
+
   const sql = `SELECT id_product, id_sale, quantity, unit_price, total_price, payment_method, 
   registered, invoice, reference, description, stock, price, total, created
   FROM sales NATURAL JOIN products 
   ORDER BY registered DESC, id_sale DESC, reference ASC;`
 
   connection.query(sql, (err, result) => {
-    if (err) { console.log("Error en la consulta: " + err); } 
+    if (err) { console.log("Error en la consulta: " + err); }
     else { res.render("sales", { sales: result }); }
   });
 };
@@ -22,19 +22,19 @@ const getSalesUpdate = (req, res) => {
 
   const sql = `SELECT * FROM sales NATURAL JOIN products 
   WHERE id_sale = ${req.params.id_sale}`;
-  
+
   connection.query(sql, (err, result) => {
-    if (err) { console.log("Error al consultar: " + err); } 
+    if (err) { console.log("Error al consultar: " + err); }
     else { res.render("salesUpdate", { data: result }); }
   });
 };
 
 const getSalesDelete = (req, res) => {
-  
+
   const sql = `SELECT * FROM sales WHERE id_sale=${req.params.id_sale}`;
-  
+
   connection.query(sql, (err, result) => {
-    if (err) { console.log("Error al consultar: " + err); } 
+    if (err) { console.log("Error al consultar: " + err); }
     else { res.render("salesDelete", { data: result }); }
   });
 };
@@ -49,8 +49,8 @@ const getSeparado = (req, res) => {
   WHERE payment_method ='separado'`;
 
   connection.query(sql, (err, result) => {
-    if (err) { console.log("error al consultar separado: " + err); } 
-    else { res.render("salesSeparado", {data: result}); }
+    if (err) { console.log("error al consultar separado: " + err); }
+    else { res.render("salesSeparado", { data: result }); }
   });
 };
 
@@ -64,11 +64,11 @@ const salesAdd = (req, res) => {
   let unit_price = req.body.unit_price;
   let total_price = 0;
   let payment_method = req.body.payment_method.toUpperCase();
-  
+
   if (payment_method == 'BOLD') {
-    unit_price = Math.round(unit_price - ((unit_price * 3.404) / 100))
+    unit_price = Math.round(unit_price - (((unit_price * 3.104) / 100) + 300))
     total_price = unit_price * quantity;
-  } 
+  }
   else {
     total_price = unit_price * quantity;
   }
@@ -77,9 +77,9 @@ const salesAdd = (req, res) => {
 
   const sql = `INSERT INTO sales (id_product, quantity, unit_price, total_price, payment_method, registered) 
   VALUES (${id_product}, ${quantity}, ${unit_price}, ${total_price},'${payment_method}','${registered}')`;
-  
+
   connection.query(sql, (err, result) => {
-    if (err) { console.log("ERROR AL INSERTAR: " + err); } 
+    if (err) { console.log("ERROR AL INSERTAR: " + err); }
     else { res.redirect("/sales"); }
   });
 };
@@ -101,7 +101,7 @@ const salesUpdate = (req, res) => {
   WHERE id_sale='${id_sale}'`;
 
   connection.query(sql, (err, result) => {
-    if (err) { console.log("Error al actualizar: " + err); } 
+    if (err) { console.log("Error al actualizar: " + err); }
     else { res.redirect("/sales"); }
   });
 };
@@ -109,9 +109,9 @@ const salesUpdate = (req, res) => {
 const salesDelete = (req, res) => {
 
   const sql = `DELETE FROM sales WHERE id_sale='${req.params.id_sale}'`;
-  
+
   connection.query(sql, (err, result) => {
-    if (err) { console.log("Error al eliminar: " + err); } 
+    if (err) { console.log("Error al eliminar: " + err); }
     else { res.redirect("/sales"); }
   });
 };
@@ -120,7 +120,7 @@ const salesDate = (req, res) => {
   const start = req.body.date_start;
   const end = req.body.date_end || start;
 
-  const sql = `SELECT 
+  const sql = `SELECT *,
   id_sale, quantity, unit_price, total_price, registered, payment_method,
   id_product, reference, description, stock, price, created,
 
@@ -136,8 +136,13 @@ const salesDate = (req, res) => {
   ORDER BY reference + 0, id_sale + 0, registered DESC`;
 
   connection.query(sql, (err, result) => {
-    if (err) { console.log("Error al consultar: " + err); } 
-    else { res.render("salesDateResult", { salesDate: result }); }
+    if (err) { console.log("Error al consultar: " + err); }
+
+    else {
+      // res.send(result);
+      // console.log(result)
+      res.render("salesDateResult", { salesDate: result });
+    }
   });
 };
 

@@ -3,19 +3,15 @@
 @import url('./gridSalesSeparado.css');
 @import url('./salesResults.css');
 @import url('./products.css');
-@import url('./bills.css');
-@import url('./search.css');
 @import url('./footer.css');
 @import url('./total.css');
-@import url('./users.css');
-@import url('./searchSales.css');
 @import url('./day.css');
 
 
 :root {
   --colorRojo: rgb(248, 32, 32);
   --colorAzul: dodgerblue;
-  --colorAzulOscuro: #0000c5;
+  --colorAzulOscuro: #1e6bff;
   --colorGris: #abaaaa;
   --colorGrisOscuro: #5e5e5e;
   --colorDorado: gold;
@@ -29,7 +25,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Mynerve';
   font-family: 'Arial';
   outline: none;
 }
@@ -142,6 +137,7 @@ h2 {
   font-size: 1rem;
   color: var(--colorAzul);
   text-transform: uppercase;
+  margin-top: 3.1em;
 }
 .containerbills{
   display: flex;
@@ -217,4 +213,7 @@ h2 {
 .stockStyle div{
   padding: .5em .5em 0 .5em ;
   font-size: 1.2rem;
+}
+.justifi{
+  justify-content: space-between;
 }
