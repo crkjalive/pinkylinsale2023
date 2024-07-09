@@ -2,8 +2,8 @@ let valorColor = document.querySelectorAll(".valorColor");
 let utilidadColor = document.querySelectorAll(".utilidadColor");
 let significadoColor = document.querySelector("#significadoColor");
 
-const sueldoBasico = 50000;
-const arriendo = 1857000 / 30;
+const sueldoBasico = 1300000 / 30;
+const arriendo = 1700000 / 30;
 const puntoEquilibrio = sueldoBasico + arriendo;
 
 significadoColor.innerHTML = `
