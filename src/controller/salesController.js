@@ -126,7 +126,7 @@ const salesDate = (req, res) => {
 
   count(*) as conteo,
   sum(quantity) as cantidad_total,
-  sum(total_price) as venta_total,
+  sum(total_price) as venta_total,unit_price,
   sum(quantity * price) as costo_total,
   (sum(total_price) - sum(quantity * price)) as utilidad_total
   

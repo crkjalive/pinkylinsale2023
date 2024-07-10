@@ -8,7 +8,12 @@ const day = (req, res) => {
   const start = req.body.date_start;
   const end = req.body.date_end || start;
 
-  const sql = `SELECT *, sum((total_price) - (products.price * sales.quantity)) as utilidad, sum(total_price) as total, registered, sum(sales.quantity) as prendas FROM sales NATURAL JOIN products WHERE ((registered >= '${start}') AND (registered <= '${end}')) GROUP BY registered 
+  const sql = `SELECT *, 
+  sum((total_price) - (products.price * sales.quantity)) as utilidad, 
+  sum(total_price) as total, registered, 
+  sum(sales.quantity) as prendas 
+  FROM sales NATURAL JOIN products WHERE ((registered >= '${start}') AND (registered <= '${end}')) 
+  GROUP BY registered 
   ORDER BY registered ASC, id_sale + 0`;
 
   connection.query(sql, (err, result) => {
@@ -16,7 +21,7 @@ const day = (req, res) => {
       console.log("Error al consultar: " + err);
     } else {
       // res.send(result);
-      res.render('day', {data: result})
+      res.render('day', { data: result })
 
       // res.render("salesDateResult", { salesDate: result });
     }
