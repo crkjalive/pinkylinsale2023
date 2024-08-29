@@ -12,7 +12,7 @@
     .forma {
       font-weight: bold;
       width: 70%;
-      text-align: center;
+      text-align: left;
     }
   </style>
 </head>
@@ -56,22 +56,54 @@
 
   </section>
 
-  <section style="display: flex;">
+  <div style="display: flex; margin: .5em 1em;color: dodgerblue;">
+    <h3>Datos por color</h3>
+  </div>
+  <section
+    style="display: flex; justify-content: space-between; margin: 1em 1em; border: 1px solid dodgerblue; border-radius: .5em; max-width: 60%;">
 
-    <div class="">
-      <p class="forma">Equilibrio</p>
+
+    <div class=""
+      style="background-color: rgb(228, 243, 13); color: black; justify-self: flex-start;padding: .5em 1em; border-radius: .5em;">
+      <p class="forma">WhiteSmoke</p>
       <div class="valorColor totalVenta" id="significadoColor"></div>
     </div>
 
-    <div class="">
-      <p class="forma"">Utilidad</p>
+    <div class=""
+      style="background-color: dodgerblue; color: white; justify-self: flex-start;padding: .5em 1em; border-radius: .5em;">
+      <p class="forma">DodgerBlue</p>
+      <div class="valorColor totalVenta" id="coloruno"></div>
+    </div>
+
+    <div class=""
+      style="background-color: rgb(30, 107, 255); color: white; justify-self: flex-start;padding: .5em 1em; border-radius: .5em;">
+      <p class="forma">BlueDark</p>
+      <div class="valorColor totalVenta" id="colordos"></div>
+    </div>
+
+    <div class=""
+      style="background-color: lime; color: black; justify-self: flex-start;padding: .5em 1em; border-radius: .5em;">
+      <p class="forma">deeppink</p>
+      <div class="valorColor totalVenta" id="colortre"></div>
+    </div>
+
+    <div class=""
+      style="background-color: deeppink; color: white; justify-self: flex-start;padding: .5em 1em; border-radius: .5em;">
+      <p class="forma">Lime</p>
+      <div class="valorColor totalVenta" id="colorcua"></div>
+    </div>
+
+    <div class=""
+      style="background-color: gold; color: black; justify-self: flex-start;padding: .5em 1em; border-radius: .5em;">
+      <p class="forma"">Gold  </p>
       <div class=" valorColor totalVenta">
         <%= utilidades %>
     </div>
     </div>
 
-    <div class="">
-      <p class="forma">Venta Total</p>
+    <div class=""
+      style="background-color: rgb(255, 136, 0); color: white; justify-self: flex-start;padding: .5em 1em; border-radius: .5em;">
+      <p class="forma">Total</p>
       <div class="valorColor totalVenta">
         <%= totales %>
       </div>

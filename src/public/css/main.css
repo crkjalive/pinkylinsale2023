@@ -129,8 +129,6 @@ h2 {
 }
 .title_web {
   padding: 0.5em 0.5em 0.5em 1em;
-  border-bottom: 1px solid var(--colorAzul);
-  border-top: 1px solid var(--colorAzul);
   color: var(--colorNegro);
   background-color: var(--colorBlanco);
   text-align: left;
